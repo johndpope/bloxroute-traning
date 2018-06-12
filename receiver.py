@@ -1,6 +1,7 @@
 import sys
 import socket
 import timeit
+from collections import deque
 
 BUFFER_SIZE = 80000
 
@@ -18,23 +19,22 @@ print('Connected to client')
 print('Start receiving file')
 start = timeit.default_timer()
 
-buffer = bytearray(BUFFER_SIZE)
-memview = memoryview(buffer)
+
+buffer = deque()
 total_bytes_received = 0
 
 while True:
-    bytes_count = client_socket.recv_into(memview, BUFFER_SIZE)
-    if bytes_count == 0:
+    rcvd_bytes = client_socket.recv(BUFFER_SIZE)
+    if rcvd_bytes == "":
         break
-    total_bytes_received += bytes_count
-
+    buffer.append(rcvd_bytes)
+    total_bytes_received += len(rcvd_bytes)
 end = timeit.default_timer()
+print('End time ' + str(end))
 print('Received the file. Time: ' + str(end - start) + '. Bytes: ' + str(total_bytes_received))
+
 
 # print('Saving file')
 # with open('output.txt', 'w') as f:
-#     nwritten = 0
-#     while nwritten < total_bytes_received:
-#         f.write(bytes(memview[nwritten:nwritten + BUFFER_SIZE]))
-#         nwritten += BUFFER_SIZE
+#     f.write(buffer[0:total_bytes_received])
 # print('Saved file')
