@@ -12,23 +12,29 @@ serversocket.bind((ip, port))
 serversocket.listen(5)
 print('Socket connection opened successfully')
 
-(clientsocket, address) = serversocket.accept()
+(client_socket, address) = serversocket.accept()
 print('Connected to client')
 
-def receive_file(client_socket):
-    
-    print('Start receiving file')
-    start = timeit.default_timer()
+print('Start receiving file')
+start = timeit.default_timer()
 
-    buffer = bytearray(BUFFER_SIZE)
-    memview = memoryview(buffer)
-    
-    while True:
-        bytes_count = client_socket.recv_into(memview, BUFFER_SIZE)
-        if bytes_count == 0:
-            break
-    
-    end = timeit.default_timer()
-    print('Received the file. Time: ' + str(end - start))
+buffer = bytearray(BUFFER_SIZE)
+memview = memoryview(buffer)
+total_bytes_received = 0
 
-receive_file(clientsocket)
+while True:
+    bytes_count = client_socket.recv_into(memview, BUFFER_SIZE)
+    if bytes_count == 0:
+        break
+    total_bytes_received += bytes_count
+
+end = timeit.default_timer()
+print('Received the file. Time: ' + str(end - start) + '. Bytes: ' + str(total_bytes_received))
+
+# print('Saving file')
+# with open('output.txt', 'w') as f:
+#     nwritten = 0
+#     while nwritten < total_bytes_received:
+#         f.write(bytes(memview[nwritten:nwritten + BUFFER_SIZE]))
+#         nwritten += BUFFER_SIZE
+# print('Saved file')
