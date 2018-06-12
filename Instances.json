@@ -1,0 +1,200 @@
+{
+    "Instances": [
+        {
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "PublicDnsName": "",
+            "StateReason": {
+                "Message": "pending",
+                "Code": "pending"
+            },
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "EbsOptimized": false,
+            "LaunchTime": "2018-06-11T17:26:47.000Z",
+            "PrivateIpAddress": "10.0.101.95",
+            "ProductCodes": [],
+            "VpcId": "vpc-bd9835c6",
+            "StateTransitionReason": "",
+            "InstanceId": "i-0c32e289340bca8f0",
+            "ImageId": "ami-27443b58",
+            "PrivateDnsName": "ip-10-0-101-95.ec2.internal",
+            "KeyName": "test",
+            "SecurityGroups": [
+                {
+                    "GroupName": "fully-open-dont-use-in-prod",
+                    "GroupId": "sg-90a252db"
+                }
+            ],
+            "ClientToken": "",
+            "SubnetId": "subnet-fe4d68a3",
+            "InstanceType": "c5.large",
+            "NetworkInterfaces": [
+                {
+                    "Status": "in-use",
+                    "MacAddress": "0e:d7:25:55:6b:50",
+                    "SourceDestCheck": true,
+                    "VpcId": "vpc-bd9835c6",
+                    "Description": "",
+                    "NetworkInterfaceId": "eni-541680ce",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.101.95"
+                        }
+                    ],
+                    "SubnetId": "subnet-fe4d68a3",
+                    "Attachment": {
+                        "Status": "attaching",
+                        "DeviceIndex": 0,
+                        "DeleteOnTermination": true,
+                        "AttachmentId": "eni-attach-170667a8",
+                        "AttachTime": "2018-06-11T17:26:47.000Z"
+                    },
+                    "Groups": [
+                        {
+                            "GroupName": "fully-open-dont-use-in-prod",
+                            "GroupId": "sg-90a252db"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "OwnerId": "033969152235",
+                    "PrivateIpAddress": "10.0.101.95"
+                }
+            ],
+            "SourceDestCheck": true,
+            "Placement": {
+                "Tenancy": "default",
+                "GroupName": "",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Hypervisor": "xen",
+            "BlockDeviceMappings": [],
+            "Architecture": "x86_64",
+            "RootDeviceType": "ebs",
+            "RootDeviceName": "/dev/xvda",
+            "VirtualizationType": "hvm",
+            "Tags": [
+                {
+                    "Value": "mything",
+                    "Key": "type"
+                },
+                {
+                    "Value": "sergey",
+                    "Key": "owner"
+                }
+            ],
+            "AmiLaunchIndex": 0
+        },
+        {
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "PublicDnsName": "",
+            "StateReason": {
+                "Message": "pending",
+                "Code": "pending"
+            },
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "EbsOptimized": false,
+            "LaunchTime": "2018-06-11T17:26:47.000Z",
+            "PrivateIpAddress": "10.0.101.190",
+            "ProductCodes": [],
+            "VpcId": "vpc-bd9835c6",
+            "StateTransitionReason": "",
+            "InstanceId": "i-0ac7fd3903a540cdd",
+            "ImageId": "ami-27443b58",
+            "PrivateDnsName": "ip-10-0-101-190.ec2.internal",
+            "KeyName": "test",
+            "SecurityGroups": [
+                {
+                    "GroupName": "fully-open-dont-use-in-prod",
+                    "GroupId": "sg-90a252db"
+                }
+            ],
+            "ClientToken": "",
+            "SubnetId": "subnet-fe4d68a3",
+            "InstanceType": "c5.large",
+            "NetworkInterfaces": [
+                {
+                    "Status": "in-use",
+                    "MacAddress": "0e:94:7a:1f:83:c2",
+                    "SourceDestCheck": true,
+                    "VpcId": "vpc-bd9835c6",
+                    "Description": "",
+                    "NetworkInterfaceId": "eni-551680cf",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.101.190"
+                        }
+                    ],
+                    "SubnetId": "subnet-fe4d68a3",
+                    "Attachment": {
+                        "Status": "attaching",
+                        "DeviceIndex": 0,
+                        "DeleteOnTermination": true,
+                        "AttachmentId": "eni-attach-160667a9",
+                        "AttachTime": "2018-06-11T17:26:47.000Z"
+                    },
+                    "Groups": [
+                        {
+                            "GroupName": "fully-open-dont-use-in-prod",
+                            "GroupId": "sg-90a252db"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "OwnerId": "033969152235",
+                    "PrivateIpAddress": "10.0.101.190"
+                }
+            ],
+            "SourceDestCheck": true,
+            "Placement": {
+                "Tenancy": "default",
+                "GroupName": "",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Hypervisor": "xen",
+            "BlockDeviceMappings": [],
+            "Architecture": "x86_64",
+            "RootDeviceType": "ebs",
+            "RootDeviceName": "/dev/xvda",
+            "VirtualizationType": "hvm",
+            "Tags": [
+                {
+                    "Value": "sergey",
+                    "Key": "owner"
+                },
+                {
+                    "Value": "mything",
+                    "Key": "type"
+                }
+            ],
+            "AmiLaunchIndex": 1
+        }
+    ],
+    "ReservationId": "r-04b673f8bea6e5cbc",
+    "Groups": [],
+    "OwnerId": "033969152235"
+}
+
+34.207.201.85 
+54.161.150.24
+
+sudo iperf3 -c 34.207.201.85  -P 10 -i 1 -t 60 -V
+Network: 400-550 Mbits/sec
+
+time sh -c "dd if=/dev/zero of=testfile bs=100k count=1k && sync"
+1024+0 records in
+1024+0 records out
+104857600 bytes (105 MB) copied, 0.0642187 s, 1.6 GB/s
+
+real	0m0.274s
+user	0m0.000s
+sys	0m0.060scd 
