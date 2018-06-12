@@ -1,0 +1,15 @@
+Nodes
+Receiver IP: 34.207.201.85
+Sender IP: 54.161.150.24
+
+SSH
+ssh -i ~/.ssh/bloxroute_test ec2-user@34.207.201.85
+ssh -i ~/.ssh/bloxroute_test ec2-user@54.161.150.24
+
+Copy File
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@34.207.201.85:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/sender.py ec2-user@54.161.150.24:
+
+Commands
+python receiver.py 0.0.0.0 8080
+python sender.py transfer.txt 34.207.201.85 8080

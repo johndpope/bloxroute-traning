@@ -1,5 +1,8 @@
 import sys
 import socket
+import timeit
+
+BUFFER_SIZE = 80000
 
 ip, port = sys.argv[1], int(sys.argv[2])
 
@@ -10,18 +13,22 @@ serversocket.listen(5)
 print('Socket connection opened successfully')
 
 (clientsocket, address) = serversocket.accept()
-
 print('Connected to client')
 
-chunks = bytearray(0)
+def receive_file(client_socket):
+    
+    print('Start receiving file')
+    start = timeit.default_timer()
 
-while True:
-    chunk = clientsocket.recv(1024)
-    if chunk == '':
-        break
-    chunks += chunk
+    buffer = bytearray(BUFFER_SIZE)
+    memview = memoryview(buffer)
+    
+    while True:
+        bytes_count = client_socket.recv_into(memview, BUFFER_SIZE)
+        if bytes_count == 0:
+            break
+    
+    end = timeit.default_timer()
+    print('Received the file. Time: ' + str(end - start))
 
-print('Received the file')
-
-with open('output.txt', 'w') as f:
-    read_data = f.write(chunks)
+receive_file(clientsocket)
