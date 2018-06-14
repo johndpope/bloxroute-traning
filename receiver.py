@@ -16,16 +16,21 @@ print('Socket connection opened successfully')
 
 print('Starting epoll')
 epoll = select.epoll()
-epoll.register(serversocket.fileno(), select.EPOLLIN | select.EPOLLET)
+epoll.register(serversocket.fileno(), select.EPOLLIN | select.EPOLLHUP| select.EPOLLERR | select.EPOLLET)
 
 buffer = deque()
 total_bytes_received = 0
 start = None
+new_bytes = None
+finished_receiving = False
 
 try:
-    connections = {}; requests = {}; responses = {}
+    connections = {}
     while True:
-        print('Waiting for events on the socker')
+        if finished_receiving:
+            print('Ending epoll loop')
+            break
+
         events = epoll.poll(-1)
         for fileno, event in events:
             if fileno == serversocket.fileno():
@@ -33,23 +38,35 @@ try:
                     while True:
                         connection, address = serversocket.accept()
                         connection.setblocking(0)
-                        epoll.register(connection.fileno(), select.EPOLLIN | select.EPOLLET)
+                        epoll.register(connection.fileno(), select.EPOLLIN | select.EPOLLHUP | select.EPOLLET)
                         connections[connection.fileno()] = connection
-                        requests[connection.fileno()] = b''
-                        responses[connection.fileno()] = response
-                except socket.error:
+                except socket.error as e:
                     pass
             elif event & select.EPOLLIN:
                 try:
                     if start == None:
+                        print('Start receiving file')
                         start = timeit.default_timer()
 
                     while True:
-                        new_bytes += connections[fileno].recv(1024)
-                        buffer.append(new_bytes)
+                        new_bytes = connections[fileno].recv(1024)
                         total_bytes_received += len(new_bytes)
+
+                        if len(new_bytes) == 0:
+                            print('Zero bytes received')
+                            finished_receiving = True
+                            break
+
                 except socket.error:
                     pass
+
+            elif event & select.EPOLLHUP:
+                epoll.unregister(fileno)
+                connections[fileno].close()
+                del connections[fileno]
+                
+                print('EPOLLHUP received')
+                finished_receiving = True
 finally:
     epoll.unregister(serversocket.fileno())
     epoll.close()
@@ -58,31 +75,3 @@ finally:
 end = timeit.default_timer()
 
 print('Received the file. Time: ' + str(end - start) + '. Bytes: ' + str(total_bytes_received))
-
-# (client_socket, address) = serversocket.accept()
-# print('Connected to client')
-
-# print('Start receiving file')
-
-# buffer = deque()
-# total_bytes_received = 0
-# start = None
-
-# while True:
-#     rcvd_bytes = client_socket.recv(BUFFER_SIZE)
-#     if start == None:
-#         start = timeit.default_timer()
-
-#     if rcvd_bytes == "":
-#         break
-#     buffer.append(rcvd_bytes)
-#     total_bytes_received += len(rcvd_bytes)
-# end = timeit.default_timer()
-# print('End time ' + str(end))
-# print('Received the file. Time: ' + str(end - start) + '. Bytes: ' + str(total_bytes_received))
-
-
-# print('Saving file')
-# with open('output.txt', 'w') as f:
-#     f.write(buffer[0:total_bytes_received])
-# print('Saved file')
