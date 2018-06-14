@@ -115,7 +115,7 @@ try:
                         start = timeit.default_timer()
 
                     while True:
-                        new_bytes = connections[fileno].recv(1024)
+                        new_bytes = connections[fileno].recv(FILE_CHUNK_SIZE)
                         
                         buffer += new_bytes
                         

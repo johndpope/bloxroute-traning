@@ -1,36 +1,4 @@
-Nodes
-Receiver IP: 34.207.201.85
-Receiever 2 IP: 34.230.34.244 
-Receiver 3 IP: 54.226.36.1
-Sender IP: 54.161.150.24
-Relay IP: 54.91.141.111
-
-SSH
-ssh -i ~/.ssh/bloxroute_test ec2-user@34.207.201.85
-ssh -i ~/.ssh/bloxroute_test ec2-user@34.230.34.244
-ssh -i ~/.ssh/bloxroute_test ec2-user@54.226.36.1
-
-ssh -i ~/.ssh/bloxroute_test ec2-user@54.161.150.24
-
-ssh -i ~/.ssh/bloxroute_test ec2-user@54.91.141.111
-
-Copy File
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@34.207.201.85:
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@34.230.34.244:
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@54.226.36.1:
-
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/sender.py ec2-user@54.161.150.24:
-
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/relay.py ec2-user@54.91.141.111:
-
-Commands
-python receiver.py 0.0.0.0 8080
-python relay.py 8080 34.207.201.85 8080 34.230.34.244 8080 54.226.36.1 8080
-python sender.py transfer.txt 54.91.141.111 8080
-
-
 aws ec2 run-instances --associate-public-ip-address --image-id ami-27443b58 --count 1 --instance-type c5.large --key-name test --security-group-ids sg-90a252db --subnet-id subnet-fe4d68a3 --tag-specifications 'ResourceType=instance,Tags=[{Key=owner,Value=Sergey},{Key=type,Value=mything}]'
-
 
 ip=""
 while [[ -z "$ip" ]]; do
@@ -39,5 +7,9 @@ while [[ -z "$ip" ]]; do
 done
 echo $ip
 
-sudo iperf3 -c 54.91.141.111  -P 10 -i 1 -t 60 -V
 
+54.146.113.165
+52.71.252.240
+54.152.196.152
+18.232.71.160
+18.207.229.31

@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -ex
 
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@34.207.201.85:
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@34.230.34.244:
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@54.226.36.1:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@54.146.113.165:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@52.71.252.240:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/receiver.py ec2-user@54.152.196.152:
 
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/sender.py ec2-user@54.161.150.24:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/relay.py ec2-user@18.232.71.160:
 
-scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/relay.py ec2-user@54.91.141.111:
+scp -i ~/.ssh/bloxroute_test /Users/Sergey/Documents/Projects/BloXroute/training/sender.py ec2-user@18.207.229.31:
+
+

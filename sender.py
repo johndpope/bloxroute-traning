@@ -24,6 +24,7 @@ start = timeit.default_timer()
 
 send_completed = False
 file_chunk = None
+total_bytes_sent = 0
 
 try:
     connections = {}
@@ -48,6 +49,7 @@ try:
                                 break
                             
                             bytes_sent = socket1.send(file_chunk)
+                            total_bytes_sent += bytes_sent
                     except socket.error:
                         pass
 
@@ -61,4 +63,4 @@ finally:
     socket1.close()
 
 end = timeit.default_timer()
-print('Send file completed. Time: ' + str(end - start))
+print('Send file completed. Time: ' + str(end - start) + ' Bytes sent: ' + str(total_bytes_sent))

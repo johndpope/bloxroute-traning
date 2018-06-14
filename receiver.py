@@ -49,7 +49,7 @@ try:
                         start = timeit.default_timer()
 
                     while True:
-                        new_bytes = connections[fileno].recv(1024)
+                        new_bytes = connections[fileno].recv(BUFFER_SIZE)
                         total_bytes_received += len(new_bytes)
 
                         if len(new_bytes) == 0:
